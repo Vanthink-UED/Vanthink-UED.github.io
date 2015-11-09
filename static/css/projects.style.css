@@ -1,0 +1,306 @@
+/** freleap projcet css date:2014-07-30**/
+@charset utf-8;
+/** css reset **/
+html,body{ width: 100%; height: 100%;}
+body{background-color:#fefefe;font-size:14px;color:#666;font-family: arial,sans-serif;}
+body,ul,li,ol,div,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,img{margin:0;padding:0}
+ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+img{border:none}
+img,select,input,textarea,button{vertical-align:middle}
+a{color:#444;text-decoration:none;cursor:pointer; transition:all .2s ease-in;-webkit-transition:all .2s ease-in;}
+a:hover{color:#000; }
+.gclearfix:after,#channel:after,.hd:after,.bd:after,.ft:after,.gmodule:after{display:block;clear:both;visibility:hidden;height:0;content:''}
+.gclearfix,#channel,.hd,.bd,.ft,.gmodule{zoom:1}
+.doc-hd,.doc-bd,.doc-ft{ position:relative; }
+.wrap{z-index:1; position:relative; height:100%;}
+.clear{height:0; clear:both;}
+/** end css reset **/
+
+/*** icon font ***/
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	margin-right: 10px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-uniE629:before {
+	content: "\e629";
+}
+.icon-home:before {
+	content: "\e603";
+}
+.icon-image:before {
+	content: "\e62a";
+}
+.icon-headphones:before {
+	content: "\e62b";
+}
+.icon-play:before {
+	content: "\e604";
+}
+.icon-pacman:before {
+	content: "\e605";
+}
+.icon-book:before {
+	content: "\e606";
+}
+.icon-file:before {
+	content: "\e62c";
+}
+.icon-cart:before {
+	content: "\e607";
+}
+.icon-undo:before {
+	content: "\e608";
+}
+.icon-redo:before {
+	content: "\e609";
+}
+.icon-bookmark:before {
+	content: "\e62d";
+}
+.icon-star:before {
+	content: "\e60a";
+}
+.icon-heart:before {
+	content: "\e60b";
+}
+.icon-googleplus:before {
+	content: "\e630";
+}
+.icon-facebook:before {
+	content: "\e631";
+}
+.icon-twitter:before {
+	content: "\e632";
+}
+.icon-github:before {
+	content: "\e600";
+}
+.icon-file-xml:before {
+	content: "\e62e";
+}
+.icon-dribbble:before {
+	content: "\e60c";
+}
+.icon-settings:before {
+	content: "\e60d";
+}
+.icon-news:before {
+	content: "\e60e";
+}
+.icon-like:before {
+	content: "\e62f";
+}
+.icon-phone:before {
+	content: "\e61d";
+}
+.icon-mobile:before {
+	content: "\e61e";
+}
+.icon-pencil:before {
+	content: "\e61f";
+}
+.icon-user:before {
+	content: "\e60f";
+}
+.icon-location:before {
+	content: "\e620";
+}
+.icon-bag:before {
+	content: "\e621";
+}
+.icon-clock:before {
+	content: "\e622";
+}
+.icon-earth:before {
+	content: "\e610";
+}
+.icon-keyboard:before {
+	content: "\e623";
+}
+.icon-screen:before {
+	content: "\e611";
+}
+.icon-rss:before {
+	content: "\e624";
+}
+.icon-checkmark:before {
+	content: "\e612";
+}
+.icon-cross:before {
+	content: "\e613";
+}
+.icon-minus:before {
+	content: "\e614";
+}
+.icon-plus:before {
+	content: "\e615";
+}
+.icon-cw:before {
+	content: "\e616";
+}
+.icon-list:before {
+	content: "\e617";
+}
+.icon-layout:before {
+	content: "\e618";
+}
+.icon-folder:before {
+	content: "\e625";
+}
+.icon-trash:before {
+	content: "\e626";
+}
+.icon-upload:before {
+	content: "\e627";
+}
+.icon-download:before {
+	content: "\e628";
+}
+.icon-arrow-left:before {
+	content: "\e619";
+}
+.icon-arrow-down:before {
+	content: "\e61a";
+}
+.icon-arrow-up:before {
+	content: "\e61b";
+}
+.icon-uniE61C:before {
+	content: "\e61c";
+}
+.icon-twitter2:before {
+	content: "\e633";
+}
+.icon-facebook2:before {
+	content: "\e634";
+}
+.icon-googleplus2:before {
+	content: "\e635";
+}
+.icon-googleplus3:before {
+	content: "\e636";
+}
+.icon-pinterest:before {
+	content: "\e637";
+}
+.icon-instagram:before {
+	content: "\e601";
+}
+.icon-evernote:before {
+	content: "\e638";
+}
+.icon-sina-weibo:before {
+	content: "\e602";
+}
+/** end icon font**/
+/** css spirit **/
+.cs-icon { background: url(../img/css-spirit.png) no-repeat 0 0;}
+.cs-arrow-up{background-position:  0 0;}
+
+/** end  css spirit **/
+
+
+.left-aside{
+	position: absolute;
+	left:0;
+	right:50%;
+	top:0;
+	bottom:0;
+}
+.left-aside .container{ 
+	position: relative;
+	width:480px;
+	margin:200px auto;
+	text-align: center;
+} 
+
+.nav,.nav-cn{
+	width:200px;
+	margin:80px auto;
+}
+.nav-cn{ 
+	margin:50px auto 120px;
+}
+.nav li{
+	width:100%;
+	text-align: center;
+
+}
+.nav li a{
+	display: inline-block;
+	height:30px;
+	width:100%;
+	font-size: 16px;
+	line-height: 30px;
+	border-left: 1px solid #fff;
+}
+
+.nav li a:hover{border-left: 1px solid #444; color:#111;}
+.nav li a .active{ border-left: 1px solid #444;}
+.nav-cn li{
+	float: left;
+	width:50%;
+	text-align: center;
+}
+.nav-cn li a{
+	display: inline-block;
+	height:80px;
+	padding:20px 2px 0 2px;
+	width:20px;
+	font-size: 16px;
+	line-height: 30px;
+	border-width:1px;
+	border-style: solid;
+	border-color:#fff;
+}
+.nav-cn li a:hover{border-color:#444; }
+footer{width:360px; margin:250px auto;text-align: center;}
+footer.cn{ margin-top: 280px;}
+footer  nav{ height: 30px;}
+footer  nav a{float: left; display: inline-block; width:33%; }
+footer p{ margin-top: 45px;}
+footer .dis{ margin-top:10px;}
+footer .media a{ display: inline-block; width:45%; }
+.right-aside{
+	overflow: hidden;
+	position: fixed;
+	left:50%;
+	right:0;
+	top:0;
+	bottom:0;
+}
+.right-aside ul{
+	position: absolute;
+	width: 100%;
+	top:0;
+}
+.right-aside .item{
+	position:relative;
+	min-height:80%;
+
+	background-color: #333;
+}
+
+
+
+
