@@ -1,164 +1,59 @@
+var WIDTH = window.innerWidth,
+    HEIGHT = window.innerHeight;
+ 
+var angle = 45,
+    aspect = WIDTH / HEIGHT,
+    near = 0.1,
+    far = 3000;
 
+var container = document.getElementById('three-js');
 
-/**earth**/
+var camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
+camera.position.set(0, 0, 0);
+var scene = new THREE.Scene();
 
-EarthApp = function(){
-	Sim.App.call(this);
+var light = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, 1);
+light.position.set(4000, 4000, 1500);
+light.target.position.set (1000, 3800, 1000);
+
+scene.add(light);
+
+var earthGeo = new THREE.SphereGeometry (60, 90, 300), 
+    earthMat = new THREE.MeshPhongMaterial(); 
+
+// diffuse map
+earthMat.map = THREE.ImageUtils.loadTexture('static/img/mars-lowpoly.jpg');
+
+earthMat.bumpScale = 8;
+
+var earthMesh = new THREE.Mesh(earthGeo, earthMat);
+earthMesh.position.set(-100, 0, 0); 
+earthMesh.rotation.y=5;
+
+scene.add(earthMesh);
+
+camera.lookAt( earthMesh.position );
+
+//renderer
+var renderer = new THREE.WebGLRenderer({antialiasing : true});
+renderer.setSize(WIDTH, HEIGHT);
+renderer.domElement.style.position = 'relative';
+
+container.appendChild(renderer.domElement);
+renderer.autoClear = false;
+renderer.shadowMapEnabled = true;
+
+function animate() {
+   requestAnimationFrame(animate);
+   render(); 
 }
-//子类Sim.App
-EarthApp.prototype = new Sim.App();
-//自定义初始化过程
-EarthApp.prototype.init = function(param){
-	//调用父类初始化场景
-	Sim.App.prototype.init.call(this,param);
 
-	// 创建地球
-	var earth = new Earth();
-	earth.init();
-	this.addObject(earth);
+function render() {
+   var clock = new THREE.Clock();
+   var delta = clock.getDelta(); 
 
-	var stars = new Stars();
-	stars.init(200);
-	this.addObject(stars);	
+   earthMesh.rotation.y += 0.2 * 0.02;
+   renderer.render(scene, camera);
 }
 
-//
-
-Earth = function(){
-	Sim.Object.call(this);
-}
-
-Earth.prototype = new Sim.Object();
-
-Earth.prototype.init = function(){
-	// 创建地球体并且添加纹理
-	var earthmap = "../static/img/earth06.jpg";
-	var geometry = new THREE.SphereGeometry(1.2,32,32);
-	var texture = THREE.ImageUtils.loadTexture(earthmap);
-	var material = new THREE.MeshBasicMaterial({map:texture});
-	var mesh = new THREE.Mesh(geometry,material);
-
-	// 稍微倾斜一下
-	mesh.rotation.z = Earth.TILT;
-
-
-	//把对象传递给框架
-
-	this.setObject3D(mesh);
-	this.object3D.position.x = 0;
-}
-
-Earth.prototype.update = function(){
-	// 让地球动起来
-	this.object3D.rotation.y += Earth.ROTATION_Y;
-
-}	
-
-Earth.ROTATION_Y = 0.0025;
-Earth.TILT = 0.41;
-/**end earth**/
-/** ParticlesSystem**/
-var Stars = function(){
-	Sim.Object.call(this);	
-}
-Stars.prototype = new Sim.Object();
-Stars.prototype.init = function(minDistance){
-	// 创建容纳粒子系统的群组
-	var starsGroup = new THREE.Object3D();
-	var i;
-	var starsGeometry = new THREE.Geometry();
-
-	// 创建随机粒子系统位置坐标
-
-	for(i=0; i<Stars.NVERTICES; i++){
-		var vector = new THREE.Vector3(
-			(Math.random() * 2 - 1) * minDistance,
-			(Math.random() * 2 - 1) * minDistance,
-			(Math.random() * 2 - 1) * minDistance
-		);
-
-		if (vector.length() < minDistance) {
-			vector = vector.setLength(minDistance);
-		}
-
-		starsGeometry.vertices.push( new THREE.Vertex(vector) );
-	}
-
-	//创建恒星的尺寸和颜色
-
-	var starsMaterials = [];
-	for(i = 0; i < Stars.NMATERIALS; i++){
-		starsMaterials.push(
-			new THREE.ParticleBasicMaterial({ 
-				color: 0x101010 * (i+1),
-				size: i%2 + 1,
-				sizeAttenuation: false
-			})
-		);
-
-	}
-
-	// 创建若干个粒子系统，以圆形围绕的方式，覆盖整个天空
-	for( i = 0; i < Stars.NPARTICLESYSTEM; i ++){
-		var stars = new THREE.ParticleSystem(
-			starsGeometry, starsMaterials[i % Stars.NMATERIALS]
-		)
-		stars.rotation.y = i/(Math.PI * 2);
-
-		starsGroup.add( stars );
-	}
-
-	this.setObject3D(starsGroup);
-
-}
-Stars.NVERTICES = 1200;
-Stars.NMATERIALS = 8;
-Stars.NPARTICLESYSTEM = 24;
-
-
-
-/** end Particlessystem**/
-
-
-// 初始化
-var renderer = null;
-var scene = null;
-var camera = null;
-var mesh = null;
-
-
-/** end webgl **/
-
-
-
-
-
-$(document).ready(function() {
-		var container = document.getElementById("three-js");
-		var app = new EarthApp();
-		app.init({ container: container });
-		app.run();
-
-		$(".js-join-us").click(function(){
-			$("#three-js").hide();
-			$(".doc-hd").hide();
-			$(".doc-bd").show();
-		});
-
-		var ajaxUrl = "../data/about-us.php";
-		$.getJSON(ajaxUrl, function(result){
-			
-			if(result.success){
-				console.log(result.data);
-				var html = template("list",{list:result.data});
-				document.getElementById('list-container').innerHTML = html;
-				$("#list-container li").click(function(){
-					top.location.href = $(this).attr("data-url");
-				})
-			}
-		});
-
-
-
-	}
-);
+animate();

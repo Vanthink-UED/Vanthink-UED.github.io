@@ -2,17 +2,17 @@
 
 	@font-face {
 	    font-family: 'Segoe WP';
-	    src: url('./fonts/segoeuil.eot');
-	    src: url('./fonts/segoeuil.eot?#iefix') format('embedded-opentype'),
-	         url('./css/fonts/segoeuil.woff') format('woff'),
-	         url('./fonts/segoeuil.ttf') format('truetype');
+	    src: url('../fonts/segoeuil.eot');
+	    src: url('../fonts/segoeuil.eot?#iefix') format('embedded-opentype'),
+	         url('../css/fonts/segoeuil.woff') format('woff'),
+	         url('../fonts/segoeuil.ttf') format('truetype');
 	    font-weight: lighter;
 	    font-style: normal;
 	}
 
 /** css reset **/
 html,body{overflow: hidden; width: 100%; height: 100%;}
-body{font-size:14px;color:#666;font-family:Segoe WP, Microsoft Yahei, arial,sans-serif;}
+body{font-size:62.5%;color:#666;font-family:Segoe WP, Microsoft Yahei, arial,sans-serif;}
 body,ul,ol,div,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,img{margin:0;padding:0}
 ul{list-style:none}
 table{border-collapse:collapse;border-spacing:0}
@@ -35,20 +35,26 @@ a:hover{color:#dc4f35; }
 	right: 0;
 	bottom: 0;
 	color:#f9f9f9;
-	font-size:38px;
-	word-spacing: 15px;
+	font-size:1.7rem;
+	word-spacing: 0.5em;
 	text-align:center;
+}
+@media all and (min-width:768px){
+    .doc-hd{ 
+        font-size: 2.2rem;
+    }
 }
  #three-js{ 
 	overflow:hidden;
 	position: relative;
 	left:0;
 	top:0;
-	width:150%;
-	height:150%;
-	background-color: #000;
+	width:100%;
+	height:100%;
+	background:url(../img/universe-bg.jpg) no-repeat center center;
+     background-size: cover;
 	color:#f9f9f9;
-	font-size:30px;
+	font-size:1.5rem;
 	text-align:center;
 	z-index: 0;
 }
@@ -56,24 +62,85 @@ a:hover{color:#dc4f35; }
 	position: absolute;
 	top:50%;
 	left:50%;
-	width: 960px;
-	height:220px;
-	margin-left: -480px;
-	margin-top:-110px;
+	width: 90%;
+	height: 11rem;
+	margin-left: -45%;
+	margin-top:-5.5rem;
 }
-.doc-hd p{
-	width:960px;
-	margin:0px auto;
+.doc-hd .btn-join-us{
+	overflow: hidden;
+    display: block;
+	position: relative;
+    
+    margin:2em auto 0;
+    width: 150px;
+    height: 60px;
+    line-height: 60px;
+    color:#f1f1f1;
 }
-.doc-hd a{
-	display: inline-block;
-	margin-top:80px;
-	padding: 5px 30px;
-	border:3px solid #f3f3f3;
+.doc-hd .btn-join-us:hover{
+    background: none;
+    color:#fff;
+}
+.btn-join-us svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.btn-join-us svg line {
+	stroke-width: 5;
+	stroke: #fff;
+	fill: none;
+	stroke-dasharray: 200;
+	-webkit-transition: -webkit-transform .6s ease-out;
+	transition: transform .6s ease-out;
+}
+.btn-join-us:hover svg line.top,
+.btn-join-us:active svg line.top{
+  -webkit-transform: translateX(-300px);
+  transform: translateX(-300);
+}
+
+.btn-join-us:hover svg line.bottom,
+.btn-join-us:active svg line.bottom{
+  -webkit-transform: translateX(300px);
+  transform: translateX(300px);
+}
+
+.btn-join-us:hover svg line.left,
+.btn-join-us:active svg line.left{
+  -webkit-transform: translateY(120px);
+  transform: translateY(120px);
+}
+
+.btn-join-us:hover svg line.right,
+.btn-join-us:active svg line.right{
+  -webkit-transform: translateY(-120px);
+  transform: translateY(-120px);
+}
+
+.doc-hd .links a{
+    border:none;
+    width: 90px;
+    padding: 0;
+    margin-top: 2rem;
+    font-size: 16px;
+    line-height: 1.2;
+    color:#999;
+}
+.doc-hd .links a:last-child{
+    border-right-width: 0;
 }
 .doc-hd a:hover{
 	background-color: #f3f3f3;
 	color:#1ba1e2;
+}
+.doc-hd .links a:hover{
+    background: none;
+    color:#f1f1f1;
+    text-decoration: underline;
+    text-decoration-style: dashed;
 }
 .doc-bd{
 	overflow: auto;
