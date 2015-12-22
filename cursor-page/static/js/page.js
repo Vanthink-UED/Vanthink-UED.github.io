@@ -8,7 +8,7 @@ $(function () {
             clipboard.setData("text/plain", val);
         });
         client.on("aftercopy", function (event) {
-            alert('已经复制');
+            alert('Copied!');
         });
     });
 
