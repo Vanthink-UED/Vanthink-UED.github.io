@@ -1,0 +1,31 @@
+<h3 id="-module">创建 Module</h3>
+<p>目前 angularAMD 支持的模块内部定义的方法有:</p>
+<ul>
+<li><p><code>.provider</code></p>
+</li>
+<li><p><code>.controller</code></p>
+</li>
+<li><p><code>.factory</code></p>
+</li>
+<li><p><code>.service</code></p>
+</li>
+<li><p><code>.constant</code></p>
+</li>
+<li><p><code>.value</code></p>
+</li>
+<li><p><code>.directive</code></p>
+</li>
+<li><p><code>.filter</code></p>
+</li>
+<li><p><code>.animation</code></p>
+</li>
+</ul>
+<p>你可以快速写一个 <code>fatory</code></p>
+<pre><code class="lang-javascript">define([&#39;app&#39;], function (app) {
+    app.factory(&#39;Pictures&#39;, function (...) {
+        ...
+    });
+});
+</code></pre>
+<h4 id="-">加载单独定义方法</h4>
+<h4 id="-modules">第三方 Modules</h4>

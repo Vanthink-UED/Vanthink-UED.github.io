@@ -1,0 +1,15 @@
+<h3 id="angularamd-route-">angularAMD.route 路由配置</h3>
+<h4 id="-controllerurl">不设置 controllerUrl</h4>
+<p>当然如果你已经在 <code>main.js</code> 中定义了controller 的地址这样你可以不用设置controlerUrl</p>
+<pre><code class="lang-javascript">// main.js
+paths: { &#39;HomeController&#39;: &#39;scripts/controller&#39; }
+</code></pre>
+<h4 id="-controller">不设置 controller</h4>
+<p>如果你忽略了在配置中设置<code>controller</code>选项，那么<code>angularAMD.route</code>则会讲函数从<code>controlerUrl</code>返回回来，那么这样
+你可以避免抛出一个未定义的controller 名称的错误。</p>
+<pre><code class="lang-javascript">define([&#39;app&#39;], function (app) {
+    return [&quot;$scope&quot;, function ($scope) {
+        ...
+    }];
+});
+</code></pre>
