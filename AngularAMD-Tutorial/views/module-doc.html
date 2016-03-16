@@ -62,33 +62,7 @@ directive/navMenu.js</p>
     });
 });
 </code></pre>
-
-<h3>Demo</h3>
-<div class="demo" style="padding:20px;border:1px solid #ddd;">
-    
-    <table class="m-table bordered">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>age</th>
-                <th>control</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr dir-paginate="item in list | itemsPerPage:10" total-items="totalCount" current-page="pageno">
-                <td>{{item.name}}</td>
-                <td>{{item.age}}</td>
-                <td><a href="" ng-click="viewOldEvent()">View Detail</a></td>
-            </tr>
-            <tr ng-show="list==false">
-                <td colspan="3">暂无数据</td>
-            </tr>
-        </tbody>
-    </table>
-    <dir-pagination-controls boundary-links="true" ng-hide="list.length==0" on-page-change="pageChangeEvent(newPageNumber)"></dir-pagination-controls>
-    
-</div>
-<h4>代码</h4>
+<h3 id="demo">demo</h3>
 <pre><code class="lang-javascript">
 // module.js
 define([&#39;app&#39;,&#39;ngload!pagination&#39;], function (app) {  
@@ -131,7 +105,7 @@ define([&#39;app&#39;,&#39;ngload!pagination&#39;], function (app) {
     });
 });
 </code></pre>
-<h5>html</h5>
+<p>html</p>
 <pre><code class="lang-html">&lt;div class=&quot;demo&quot; style=&quot;padding:20px;border:1px solid #ddd;&quot;&gt;
 
     &lt;table class=&quot;m-table bordered&quot;&gt;
@@ -153,9 +127,8 @@ define([&#39;app&#39;,&#39;ngload!pagination&#39;], function (app) {
             &lt;/tr&gt;
         &lt;/tbody&gt;
     &lt;/table&gt;
-    &lt;dir-pagination-controls boundary-links=&quot;true&quot; ng-hide=&quot;list.length==0&quot; on-page-change=&quot;pageChangeEvent(newPageNumber)&quot;&gt;&lt;/dir-pagination-controls&gt;
+    &lt;dir-pagination-controls boundary-links=&quot;true&quot; ng-hide=&quot;list2.length==0&quot; on-page-change=&quot;pageChangeEvent(newPageNumber)&quot;&gt;&lt;/dir-pagination-controls&gt;
 
 &lt;/div&gt;
 </code></pre>
-
 <p><a href="#seed">下一章:种子使用</a> </p>

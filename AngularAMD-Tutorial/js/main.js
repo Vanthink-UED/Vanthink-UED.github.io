@@ -10,6 +10,7 @@ require.config({
             'ngload' : './lib/' + 'ngload.min',
             'ng-progress': './lib/ngprogress.min',
             'vued.cat': './directive/cat',
+            'pagination': './directive/pagination'
         },
         shim: {
                 'angularAMD': ['angular'],

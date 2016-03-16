@@ -12,7 +12,7 @@ define(['angularAMD'], function (angularAMD) {
                         url: 'get-started',
                     },
                     {
-                        name: '目录划分',
+                        name: '目录结构',
                         url: 'directory',
                     },
                     {
@@ -24,8 +24,20 @@ define(['angularAMD'], function (angularAMD) {
                         url: 'controller',
                     },
                     {
+                        name: '模块',
+                        url: 'module',
+                    },
+                    {
+                        name: '种子使用',
+                        url: 'seed',
+                    },
+                    {
                         name: '更多阅读',
                         url: 'more-doc',
+                    },
+                    {
+                        name: '持续完善',
+                        url: 'others',
                     },
                 ];   
     angular.module('Vued.cat', [] )
@@ -53,7 +65,6 @@ define(['angularAMD'], function (angularAMD) {
                     item.active = false;
                 }
             });
-            console.log(list);
             
         }
     });

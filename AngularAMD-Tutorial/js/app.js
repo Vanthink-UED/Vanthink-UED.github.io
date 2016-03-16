@@ -26,8 +26,28 @@ define(['angularAMD', 'angular-route','vued.cat','ng-progress'], function (angul
                 controller: 'HomeCtrl',
                 controllerUrl: './js/controller/home.js'
             }))
+            .when("/controller", angularAMD.route({
+                templateUrl: 'views/controller.html',
+                controller: 'ControllerCtrl',
+                controllerUrl: './js/controller/controller.js'
+            }))
+            .when("/module", angularAMD.route({
+                templateUrl: 'views/module.html',
+                controller: 'ModuleCtrl',
+                controllerUrl: './js/controller/module.js'
+            }))
+            .when("/seed", angularAMD.route({
+                templateUrl: 'views/seed.html',
+                controller: 'HomeCtrl',
+                controllerUrl: './js/controller/home.js'
+            }))
             .when("/more-doc", angularAMD.route({
                 templateUrl: 'views/more-doc.html',
+                controller: 'HomeCtrl',
+                controllerUrl: './js/controller/home.js'
+            }))
+            .when("/others", angularAMD.route({
+                templateUrl: 'views/others.html',
                 controller: 'HomeCtrl',
                 controllerUrl: './js/controller/home.js'
             }))
@@ -40,7 +60,7 @@ define(['angularAMD', 'angular-route','vued.cat','ng-progress'], function (angul
     
     
     /** route watch **/
-     app.run(function($rootScope, ngProgressFactory,catset) {
+    app.run(function($rootScope, ngProgressFactory,catset) {
 
         var ngProgress = ngProgressFactory.createInstance();
 
