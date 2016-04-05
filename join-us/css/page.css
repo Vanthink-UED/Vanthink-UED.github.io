@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+   background: #f4f0ea;
+   font-family: "Microsoft Yahei", "SimHei", arial, sans-serif;
+    font-weight: lighter;
+}
+.jobs-nav li a{
+    text-decoration: none;
+}
+/**add canvas**/
+
+.header-wrap{
+    position: relative;
+    height: 520px;
+    background: #1ba1e2;
+    color:#fafafa;
+}
+
+.header-wrap #canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.header-wrap .headline{
+    padding-top:200px;
+    height: 120px;
+    font-size: 35px;
+    text-align: center;
+    line-height: 120px;
+}
