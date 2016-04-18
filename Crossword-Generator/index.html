@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="EN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Crossword</title>
+<link rel="stylesheet" href="http://s1.vued.vanthink.cn/bootstrap.min.css"/>
+<link rel="stylesheet" href="style.css?v=1.266" />
+<script src="http://s1.vued.vanthink.cn/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="crossword.js"></script>
+<script type="text/javascript" src="page.js"></script>
+</head>
+
+<body>
+    <h1>Cross Word Challenge</h1>
+    <div class="left-aside">
+        <div id="crossword"></div>
+    </div>
+    <div class="right-aside">
+        <p class="form-group">
+            <input type="number" class="js-max-length" placeholder="单词长度限制"/>
+            <input type="number" class="js-max-number" placeholder="单词数量限制"/>
+        </p>
+        <p class="form-group">
+            <button type="button" class="btn btn-default btn-get-word">获取单词</button>
+            <button type="button" class="btn btn-primary btn-gen-cw">生产CrossWord</button>
+        </p>
+        <div class="form-group">
+            <textarea class="form-element js-word-list">
+                
+            </textarea>
+        </div>
+        <table id="clues">
+            <thead>
+                <tr>
+                    <th>Across</th>
+                    <th>Down</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><ul id="across"></ul></td>
+                    <td><ul id="down"></ul></td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>
+    
+    <div class="loading-mask">
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+    </div>
+</body>
+</html>
