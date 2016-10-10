@@ -3,14 +3,7 @@
  ** view doc https://github.com/Vanthink-UED/jquery.core.image.upload
  ******/
 
-;(function (factory) {
-    "use strict"; 
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else {
-        factory(window.jQuery);
-    }
-}(function ($) {
+;(function ($) {
 
     "use strict"; 
 
@@ -69,7 +62,6 @@
             
             pic.src = this.image.src;
             pic.onload = (function() {
-                console.log(pic.naturalWidth);
                 this.image.width = pic.naturalWidth;
                 this.image.height =pic.naturalHeight;
                 
@@ -81,7 +73,6 @@
         reseyLayout: function(image,$container) {
             var H = window.innerHeight - 80;
             var W = window.innerWidth - 60;
-            console.log(this.image.width);
             var imageWidth = this.image.width;
             var imageHeight = this.image.height;
             var R = imageWidth / imageHeight;
@@ -227,6 +218,9 @@
                         var h = ui.height();
                     }
                 });
+                $('body>div').bind("dragstart", function(event, ui){
+                    event.stopPropagation();
+                });
 
             };
 
@@ -269,9 +263,7 @@
         init: function () {
             
             var Options = this.options;
-            
-            
-            
+ 
            if (Options.url == "") {
                 return alert('options.url must be defined');
             }
@@ -281,10 +273,6 @@
             if (Options.inputOfFile == "") {
                 return alert('options.inputOfFile must be defined');
             }
-
-
-            
-
             var initUpload = function (element) {
                 element.css({
                     "cursor": "pointer",
@@ -399,18 +387,24 @@
             var $inputUpload = $form.find('input[type="file"]');
             
             $form.css("display", "none");
-
+       
             $form.css({
                 cursor: "pointer",
                 display: "block",
                 position: "absolute",
                 left: 0,
                 top: 0,
-                width: $el.width() <= 0 ? 132 : $el.width() + 30,
-                height: $el.height() <= 0 ? 32 : $el.height(),
+                width: parseInt($el.css('width')) <= 0 ? $el.width() : parseInt($el.css('width')),
+                height: parseInt($el.css('height')) <= 0 ? $el.height() : parseInt($el.css('height')),
                 cursor: "hand",
                 opacity: 0,
+                margin:0,
+                padding:0,
                 overflow: "hidden"
+            });
+            $inputUpload.css({
+                'width': '100%',
+                'height': '100%'
             });
             var self = this;
             $inputUpload.on("change", function (e) {
@@ -549,12 +543,12 @@
         // crop
         enableCrop: false,
         enableResize: true,
-        minimumWidthToResize: 1024,
-        minimumHeightToResize: 630,
+        minimumWidthToResize: 1,
+        minimumHeightToResize: 1,
         enableButton: false,
         cropRatio: '16:9',
         imgChangeRatio: '',
         uploadedCallback: function (response) {},    
 
     };
-})(jQuery));
+}(jQuery));

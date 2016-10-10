@@ -2,7 +2,7 @@ $(function() {
 
     // upload without other settings
     $(".js-btn-upload").coreImageUpload ({
-        url: "http://101.198.151.190/api/upload.php",
+        url: "./upload.php",
         inputOfFile: 'image',
         uploadedCallback: function (result) {
             alert(result);
@@ -11,12 +11,12 @@ $(function() {
     
     
     $(".js-btn-crop").coreImageUpload ({
-        url: "http://101.198.151.190/api/crop.php",
+        url: "./crop.php",
         inputOfFile: 'image',
         enableCrop: true,
         cropRatio: '1:1',
         uploadedCallback: function (result) {
-            alert( '裁剪成功!');
+            alert( '裁剪成功! 图片宽高:' + result.data['toCropImgW'] + result.data['toCropImgH']);
         }
     });
     

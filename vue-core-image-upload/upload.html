@@ -1,7 +1,7 @@
 
 <html lang="zh-cn">
 <head>
-    <title>Core Image Upload 演示</title>
+    <title>Vue Core Image Upload Demo</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
     <meta content="yes" name="apple-mobile-web-app-capable">
@@ -12,77 +12,119 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/hint.css/2.4.0/hint.min.css" />
     <link rel="stylesheet" href="./page.css">
-    <link rel="stylesheet" href="./jquery.core.image.upload.min.css">
     <link rel="stylesheet" href="http://s1.vued.vanthink.cn/211cd6e325e7/googlecode.css">
 </head>
 
 <body>
-<a href="https://github.com/Vanthink-UED/jquery.core.image.upload" title="Fork me on GitHub" class="github-corner"><svg width="80" height="80" viewbox="0 0 250 250"><title>Fork me on GitHub</title><path d="M0 0h250v250"></path><path d="M127.4 110c-14.6-9.2-9.4-19.5-9.4-19.5 3-7 1.5-11 1.5-11-1-6.2 3-2 3-2 4 4.7 2 11 2 11-2.2 10.4 5 14.8 9 16.2" fill="currentColor" style="transform-origin:130px 110px" class="octo-arm"></path><path d="M113.2 114.3s3.6 1.6 4.7.6l15-13.7c3-2.4 6-3 8.2-2.7-8-11.2-14-25 3-41 4.7-4.4 10.6-6.4 16.2-6.4.6-1.6 3.6-7.3 11.8-10.7 0 0 4.5 2.7 6.8 16.5 4.3 2.7 8.3 6 12 9.8 3.3 3.5 6.7 8 8.6 12.3 14 3 16.8 8 16.8 8-3.4 8-9.4 11-11.4 11 0 5.8-2.3 11-7.5 15.5-16.4 16-30 9-40 .2 0 3-1 7-5.2 11l-13.3 11c-1 1 .5 5.3.8 5z" fill="currentColor" class="octo-body"></path></svg><style> .github-corner svg{position:absolute;right:0;top:0;;color:#1f8dd6;fill:white;}.github-corner:hover .octo-arm{animation:octocat-wave .56s;}@keyframes octocat-wave{0%, 100%{transform:rotate(0);}20%, 60%{transform:rotate(-20deg);}40%, 80%{transform:rotate(10deg);}}</style></a>
+<a href="https://github.com/Vanthink-UED/vue-core-image-upload" title="Fork me on GitHub" class="github-corner"><svg width="80" height="80" viewbox="0 0 250 250"><title>Fork me on GitHub</title><path d="M0 0h250v250"></path><path d="M127.4 110c-14.6-9.2-9.4-19.5-9.4-19.5 3-7 1.5-11 1.5-11-1-6.2 3-2 3-2 4 4.7 2 11 2 11-2.2 10.4 5 14.8 9 16.2" fill="currentColor" style="transform-origin:130px 110px" class="octo-arm"></path><path d="M113.2 114.3s3.6 1.6 4.7.6l15-13.7c3-2.4 6-3 8.2-2.7-8-11.2-14-25 3-41 4.7-4.4 10.6-6.4 16.2-6.4.6-1.6 3.6-7.3 11.8-10.7 0 0 4.5 2.7 6.8 16.5 4.3 2.7 8.3 6 12 9.8 3.3 3.5 6.7 8 8.6 12.3 14 3 16.8 8 16.8 8-3.4 8-9.4 11-11.4 11 0 5.8-2.3 11-7.5 15.5-16.4 16-30 9-40 .2 0 3-1 7-5.2 11l-13.3 11c-1 1 .5 5.3.8 5z" fill="currentColor" class="octo-body"></path></svg><style> .github-corner svg{position:absolute;right:0;top:0;;color:#3ab981;fill:white;}.github-corner:hover .octo-arm{animation:octocat-wave .56s;}@keyframes octocat-wave{0%, 100%{transform:rotate(0);}20%, 60%{transform:rotate(-20deg);}40%, 80%{transform:rotate(10deg);}}</style></a>
 <div class="splash-container">
     
     <div class="splash">
         <h1 class="splash-head">
-            <img width="360" src="http://img1.vued.vanthink.cn/vued7c714fa54f3aa6a83e456ac9f65d9ba2.png" />
+            <img width="360" src="http://img1.vued.vanthink.cn/vued0486684bfe534fd6fbec2aa18f8f83a1.png" />
         </h1>
         <p class="splash-subhead">
-            A Lightweight Plugin For Image To Upload and Crop 
+            A Vue Plugin For Image To Upload and Crop
         </p>
     </div>
 </div>
-<div class="content-wrapper">
-    <h3 class="content-subhead">
+<div class="content-wrapper" id="app">
+     <h3 class="content-subhead">
         Get Started
     </h3>
     <div class="content pure-u-4-5">
         <div class="pure-g">
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
                
-                <div class="pure-button pure-button-primary js-btn-upload">upload </div>
+                <div class="user">
+                    <img class="avatar" v-bind:src="src"/>
+                </div>
+                <vue-core-image-upload v-bind:class="['pure-button','pure-button-primary','js-btn-crop']" v-bind:crop="false" url="http://101.198.151.190/api/upload.php" extensions="png,gif,jpeg,jpg" input-accept="image/*"></vue-core-image-upload>
                 <p>Click button to upload your image</p>
-                <pre><code>
-$(".js-btn-upload").coreImageUpload ({
-    url: "./upload.php",
-    inputOfFile: 'image',
-    uploadedCallback: function (result) {
-        alert(result);
+                <pre class="highlight javascript"><code>
+import VueCoreImageUpload  from './vue.core.image.upload.vue';
+
+new Vue({
+  el: '#app',
+  components: {
+    'vue-core-image-upload': VueCoreImageUpload
+  },
+  data: {
+    src: 'http://img1.vued.vanthink.cn/vued0a233185b6027244f9d43e653227439a.png',
+  },
+  methods: {
+
+  },
+  events: {
+    imageUploaded(res) {
+      if (res.errcode == 0) {
+        this.src = 'http://img1.vued.vanthink.cn/vued751d13a9cb5376b89cb6719e86f591f3.png';
+      }
     }
+  },
 });
                 </code></pre>
+                <h4>HTML</h4>
+                <pre class="highlight html"><code>
+ &lt;vue-core-image-upload 
+  v-bind:class="['pure-button','pure-button-primary','js-btn-crop']" 
+  v-bind:crop="false" url="./crop.php" 
+  extensions="png,gif,jpeg,jpg"&gt;
+&lt;/vue-core-image-upload&gt;               
+                </code></pre>
                 
-               
+              
             </div>
             
-        </div>        
+        </div>
+        
         
     </div>
-     <h3 class="content-subhead">
+    <h3 class="content-subhead">
         Crop Image 
     </h3>
     <div class="content pure-u-4-5">
         <div class="pure-g">
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-               <div class="pure-button pure-button-primary js-btn-crop">Crop Image</div>
-               <p>Click button to crop your image</p>    
-                                <pre class="highlight html"><code>
-&lt;script src="../src/jquery-ui.min.js"&gt;&lt;/script&gt;
-//...
-$(".js-btn-crop").coreImageUpload ({
-    url: "./crop.php",
-    inputOfFile: 'image',
-    enableCrop: true,
-    cropRatio: '1:1',
-    uploadedCallback: function (result) {
-        alert(result);
-    }
-});
+                <div class="user">
+                    <img class="avatar" v-bind:src="cropSrc"/>
+                    <p>{{name}}</p>
+                </div>
+              <vue-core-image-upload  crop-ratio="1:1" v-bind:class="['pure-button','pure-button-primary','js-btn-crop']" v-bind:crop="true" url="./crop.php" extensions="png,gif,jpeg,jpg" input-accept="image/*"></vue-core-image-upload>
+              <h3>Crop Arguments</h3>
+              <table class="pure-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>H</th>
+                    <th>W</th>
+                    <th>X</th>
+                    <th>Y</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{cropArgs.toCropImgH}}</td>
+                    <td>{{cropArgs.toCropImgW}}</td>
+                    <td>{{cropArgs.toCropImgX}}</td>
+                    <td>{{cropArgs.toCropImgY}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <pre class="highlight html"><code>
+&lt;vue-core-image-upload  
+  crop-ratio="1:1" 
+  v-bind:class="['pure-button','pure-button-primary','js-btn-crop']" 
+  v-bind:crop="true" 
+  url="./crop.php" 
+  extensions="png,gif,jpeg,jpg"&gt;
+&lt;/vue-core-image-upload&gt;
                 </code></pre>
-                <p>if you want to crop image ,you should inclue<code>jquery.core.image.min.css</code> and <code>jquery-ui.</code>And it will  send to server with the crop arguments</p>
-                <h3 style="padding-top:40px;"><a href="https://github.com/Vanthink-UED/jquery.core.image.upload" class="button-xlarge pure-button pure-button-radius" href="">DOWNLOAD AND DOCUMENT</a></h3>
+                <h3 style="padding-top:40px;"><a href="https://github.com/Vanthink-UED/vue-core-image-upload" class="button-xlarge pure-button pure-button-radius" href="">DOWNLOAD AND DOCUMENT</a></h3>
             </div>
          </div>
     </div>
-    
-        <div class="ft">
+    <div class="ft">
             <div class="icon-list">
                 <a href="https://vanthink-ued.github.io/jquery.core.image.upload/upload.html" class="hint--bottom" aria-label="jQuery">
                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAIAAACzY+a1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFRDBGQ0VFRjg2Q0UxMUU2QUU3NUY0QjU1NTkyODQxMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFRDBGQ0VGMDg2Q0UxMUU2QUU3NUY0QjU1NTkyODQxMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkVEMEZDRUVEODZDRTExRTZBRTc1RjRCNTU1OTI4NDExIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkVEMEZDRUVFODZDRTExRTZBRTc1RjRCNTU1OTI4NDExIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+glB5OAAAHXhJREFU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" width="60" alt="" /> 
@@ -101,12 +143,12 @@ $(".js-btn-crop").coreImageUpload ({
                  All Rights Reserved By Vanthink-UED
             </p>
         </div>
+
 </div>
-<script src="//cdn.jsdelivr.net/highlight.js/9.2.0/highlight.min.js"></script>  
+<script src="https://cdn.jsdelivr.net/highlight.js/9.2.0/highlight.min.js"></script>  
 <script>hljs.initHighlightingOnLoad();</script>
-<script src='http://s1.vued.vanthink.cn/d59f937c159f/jquery-2.2.1.min.js'></script>
-<script src="../src/jquery.core.image.upload.js"></script>
-<script src="page.js"></script>
+<script  src="./demo.min.js"></script>    
+
 </body>
 
 </html>

@@ -71,7 +71,7 @@ label {
  * I want my pure-button elements to look a little different
  */
 .pure-button {
-    background-color: #008cdb;;
+    background-color: #3ab981;
     color: white;
     padding: 0.5em 2em;
     border-radius: 5px;
@@ -87,11 +87,11 @@ a.pure-button-primary {
     border-radius: 3rem;
     padding: 1em 2em;
     background-color: transparent;
-    border:2px solid #008cdb;;
-    color: #008cdb;
+    border:2px solid #3ab981;
+    color: #3ab981;
 } 
 .pure-button-radius:hover{
-    background-color: #008cdb;;
+    background-color: #3ab981;
     color:#fff;
 }
 /*
@@ -202,7 +202,7 @@ a.pure-button-primary {
     z-index: 2;
     background: white;
     text-align: center;
-    background-color: #008cdb;
+    background-color: #3ab981;
 
 }
 .content-wrapper .content{
