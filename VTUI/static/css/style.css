@@ -57,93 +57,18 @@ a:hover{color:#dc4f35; }
 
 #page{position:relative; width:100%; min-height:100%;padding-top: 60px;text-align: center;}
 
-.wrap{
-    position: relative;
-    width: 100%;
-    margin-top: 40px;
-    background: #fff;
-    min-height: 100%;
-    box-shadow: 2px 0px 4px -2px rgba(0,0,0,.14),-2px -px 4px 2px rgba(0,0,0,.12);
-    display: flex;
-    flex-direction: row ;
-    flex-wrap:wrap;
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: left;
 }
-.wrap .box{
-    overflow: hidden;
-    position: relative;
-    width: 20%;
-    padding-top: 20%;
-    box-sizing: border-box;
-    border:1px solid #ddd;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    font-size: 18px;
-    color:#333;
-}
-.wrap .box:last-child{
-    border-right-width: 1px;
-}
-.wrap .box .btn-copy{
-    position: absolute;
-    right:20px;
-    top:10px;
-    width: 50px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 13px;
-    color:#888;
-    transition: all .2s ease;
-}
-.wrap .box:hover .btn-copy{
-    opacity: 1;
-}
-.wrap .box  .contents{
-    position: absolute;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
-    line-height: 50px;
-}
-.wrap .icon{
-	display: inline-block;
-	position: relative;
-	width:20px;
-	margin-right:10px;
-	height: 20px;
-	color:#888;
-	transition:all .2s ease .1s;
-}
-.wrap .icon:hover{
-	fill:#333;
-}
-.wrap .icon:hover .text{
-	display: block;
-}
-.wrap .icon .text{
-	display: none;
-	position: absolute;
-	top:35px;
-	left:-30px;
-	width: 80px;
-	height:28px;
-	background-color: #e74c3c;
-	border-radius:3px;
-	color:#f3f3f3;
-	font-size: 12px;
-	line-height: 28px;
-	text-align: center;
-}
-.wrap .icon .text:after{
-	content: '';
-	display: block;
-	position: absolute;
-	left:50%;
-	top:-10px;
-	margin-left: -4px;
-	border-width: 5px;
-	border-style: solid solid dashed dashed;
-	border-color: transparent transparent #e74c3c transparent;
+code, tt {
+    padding: 1px 3px;
+    border: 1px solid #f8f8f8;
+    background: #f8f8f8;
+    border-radius: 2px;
+    white-space: pre-wrap;
+    color: #e67e22;
 }
 #footer{ clear: both; position:relative;width:720px; margin: 90px auto; border-top:1px solid #e6e6e6; text-align:center;}
 #footer a{ margin:10px; line-height: 45px; color:#888;  }
