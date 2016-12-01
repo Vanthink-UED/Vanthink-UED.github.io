@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4348835d3e4308eec714"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3729b7fb4a48e1c31881"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -22137,16 +22137,31 @@
 	  displayName: 'Contents',
 	  getInitialState: function getInitialState() {
 	    return {
-	      show: false
+	      show: false,
+	      btnState: false
 	    };
 	  },
 	  handleClick: function handleClick() {
 	    this.setState({
 	      show: !this.state.show
+
 	    });
 	  },
-	  render: function render() {
+	  handleTimeout: function handleTimeout() {
 	    var _this = this;
+
+	    var self = this;
+	    this.setState({
+	      btnState: true
+	    });
+	    setTimeout(function () {
+	      _this.setState({
+	        btnState: false
+	      });
+	    }, 5000);
+	  },
+	  render: function render() {
+	    var _this2 = this;
 
 	    return _react2.default.createElement(
 	      'div',
@@ -22277,14 +22292,14 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'pure-button pure-button-primary', onClick: function onClick() {
-	                  _this.handleClick();
+	                  _this2.handleClick();
 	                } },
 	              '\u663E\u793A'
 	            ),
 	            _react2.default.createElement(
 	              'button',
 	              { style: { marginLeft: 20 }, className: 'pure-button pure-button-primary', onClick: function onClick() {
-	                  _this.handleClick();
+	                  _this2.handleClick();
 	                } },
 	              '\u9690\u85CF'
 	            ),
@@ -22292,6 +22307,34 @@
 	              'div',
 	              { className: 'loading-box' },
 	              _react2.default.createElement(_index.Spinner, { type: 'gif', text: this.state.show ? '显示...' : '隐藏...', show: this.state.show, color: '#3498db' })
+	            ),
+	            _react2.default.createElement(
+	              'pre',
+	              { className: 'highlight javascript' },
+	              _react2.default.createElement(
+	                'code',
+	                null,
+	                '<Spinner show={this.state.show} type="gif" color="#3498db"></Spinner>'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              '\u884C\u5185\u52A0\u8F7D ',
+	              _react2.default.createElement(
+	                'code',
+	                null,
+	                'display'
+	              ),
+	              ' \u5C5E\u6027'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { style: { marginLeft: 20 }, disabled: this.state.btnState, className: 'pure-button pure-button-primary', onClick: function onClick() {
+	                  _this2.handleTimeout();
+	                } },
+	              '\u663E\u793A',
+	              _react2.default.createElement(_index.Spinner, { size: '24', display: 'inline', show: this.state.btnState, color: '#fff' })
 	            ),
 	            _react2.default.createElement(
 	              'pre',
@@ -22315,23 +22358,6 @@
 	        )
 	      )
 	    );
-	  },
-	  handleRes: function handleRes(res) {
-	    console.log(res);
-	    this.setState({
-	      src: res.data.src
-	    });
-	  },
-	  handleCropRes: function handleCropRes(res) {
-	    this.setState({
-	      cropArgs: {
-	        src: 'http://img1.vued.vanthink.cn/vuedff07db9e592f103e0f8108bc633d2663.png',
-	        x: parseInt(res.data.post.toCropImgX),
-	        y: parseInt(res.data.post.toCropImgY),
-	        w: parseInt(res.data.post.toCropImgW),
-	        h: parseInt(res.data.post.toCropImgH)
-	      }
-	    });
 	  }
 	});
 
